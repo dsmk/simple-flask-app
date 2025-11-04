@@ -6,9 +6,9 @@ name: Build and Push Test backend Container Image
 on:
   push:
     branches: [ master, main ]
-    paths:
-      - 'simple-flask/**'
-      - '.github/workflows/build-simple-flask.yml'
+    # paths:
+    #   - 'simple-flask/**'
+    #   - '.github/workflows/build-simple-flask.yml'
   workflow_dispatch:
 
 env:
@@ -34,8 +34,7 @@ jobs:
           python-version: '3.x'
 
       - name: Run build and test script
-        run: |
-          (cd simple-flask && sh ./test_app.sh )
+        run: sh ./test_app.sh
 
       # - name: Install dependencies for testing
       #   run: |
@@ -56,7 +55,7 @@ jobs:
       - name: Build and push SUT image
         uses: docker/build-push-action@v5
         with:
-          context: ./simple-flask/
+          context: .
           #file: ./Containerfile
           push: true
           tags: |
