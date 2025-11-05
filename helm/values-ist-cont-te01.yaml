@@ -1,5 +1,6 @@
 service:
-  type: LoadBalancer
+  # type: LoadBalancer
+  type: ClusterIP
 ingress:
   enabled: true
   hosts:
