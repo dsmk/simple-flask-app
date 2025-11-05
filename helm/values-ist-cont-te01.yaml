@@ -1,0 +1,9 @@
+service:
+  type: LoadBalancer
+ingress:
+  enabled: true
+  hosts:
+    - host: ist-cont-te01.bu.edu
+      paths:
+        - path: /
+          pathType: Prefix
