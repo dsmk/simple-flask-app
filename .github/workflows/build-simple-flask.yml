@@ -48,9 +48,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Read BUILDDATE
-      #   id: builddate
-      #   run: echo "date=$(cat BUILDDATE.DAT)" >> $GITHUB_OUTPUT
+      - name: Read BUILDDATE
+        id: builddate
+        run: echo "date=$(cat BUILDDATE.DAT)" >> $GITHUB_OUTPUT
 
       - name: Build and push SUT image
         uses: docker/build-push-action@v5
@@ -61,6 +61,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}/simple-flask:latest
+            ghcr.io/${{ github.repository }}/simple-flask:${{ steps.builddate.outputs.date}}
             ghcr.io/${{ github.repository }}/simple-flask:${{ github.sha }}
-
-# ghcr.io/${{ github.repository }}/webrouter-base:${{ steps.builddate.outputs.date}}
