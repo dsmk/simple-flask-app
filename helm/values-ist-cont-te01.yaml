@@ -6,5 +6,5 @@ ingress:
   hosts:
     - host: ist-cont-te01.bu.edu
       paths:
-        - path: /
+        - path: "/flask(/|$)(.*)"
           pathType: Prefix
