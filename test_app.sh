@@ -25,5 +25,8 @@ curl -s http://localhost:5000/ | grep "Hello, World!" && echo "PASS" || echo "FA
 echo "Testing '/get/' endpoint"
 curl -s http://localhost:5000/get/10/20 | grep "Sum of 10 and 20 is 30" && echo "PASS" || echo "FAIL"
 
+echo "Testing '/ten/' endpoint"
+curl -s http://localhost:5000/ten/50 | grep "Ten times 50 is 500" && echo "PASS" || echo "FAIL"
+
 echo "Cleaning up..."
 $containerctl rm -f $CONTAINER_NAME
