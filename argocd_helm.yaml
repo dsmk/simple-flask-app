@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flask-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/dsmk/simple-flask-app.git'
+    targetRevision: HEAD
+    path: './helm'
+    helm:
+      valueFiles:
+        - values.yaml
+      values:
+        service:
+          type: LoadBalancer
+        ingress:
+          enabled: true
+          hosts:
+            - host: ist-cont-te01.bu.edu
+              paths:
+                - path: /
+                  pathType: Prefix
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: flask-app
+  syncPolicy:
+    automated:
+      prune: true           # Automatically remove deleted resources
+      selfHeal: true        # Automatically sync out-of-sync resources

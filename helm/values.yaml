@@ -1,0 +1,21 @@
+replicaCount: 2
+
+image:
+  repository: ghcr.io/dsmk/simple-flask-app/simple-flask
+  tag: 2025-11-04.2
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer  # options: LoadBalancer, ClusterIP, NodePort, or "Ingress" (custom param)
+  port: 80
+  targetPort: 5000
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
