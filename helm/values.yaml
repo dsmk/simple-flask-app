@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: ghcr.io/dsmk/simple-flask-app/simple-flask
-  tag: 2025-11-04.2
+  tag: 2025-11-05.1
   pullPolicy: IfNotPresent
 
 service:

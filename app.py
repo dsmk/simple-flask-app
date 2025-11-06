@@ -19,6 +19,6 @@ def ten_times(x):
     return f"<p>Ten times {x} is {total}</p>\n"
 
 # Uncomment this when you want to add a health check endpoint
-# @app.route('/health')
-# def health_check():
-#     return "<p>OK</p>\n", 200
+@app.route('/health')
+def health_check():
+    return "<p>OK</p>\n", 200
